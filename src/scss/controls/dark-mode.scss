@@ -1,0 +1,21 @@
+@use "./variables" as vars;
+
+body {
+    $bg-time: .2s;
+
+    &.dark-mode-transitionable{
+        transition: background-color  $bg-time ease-out, color $bg-time ease-in-out  $bg-time;
+    }
+    
+
+    &.isDarkMode {
+        background-color: vars.$dark-bg;
+        color: vars.$dark-color2;
+
+        .snake-block {
+            background-color: vars.$dark-color1;
+        }
+    }
+}
+
+

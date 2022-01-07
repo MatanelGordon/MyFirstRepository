@@ -1,0 +1,9 @@
+.snake{
+
+    &-block{
+        background-color: red;
+        &:first-child{
+            background-image: url("../public/trump-head.png");
+        }
+    }
+}

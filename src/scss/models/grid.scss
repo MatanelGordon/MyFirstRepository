@@ -1,0 +1,29 @@
+@keyframes can-go-through-walls-animaiton{
+    0%,100%{
+        border-color: rgba(187, 100, 100, 1);
+    }
+
+    50%{
+        border-color: rgba(187, 100, 100, .3);
+    }
+}
+
+.snake-grid {
+    $grid-size: 80vmin;
+    $grid-size-max: 800px;
+    $grid-size-min: 500px;
+
+    position: relative;
+    width: $grid-size;
+    height: $grid-size;
+    max-width: $grid-size-max;
+    max-height: $grid-size-max;
+    min-width: $grid-size-min;
+    min-height: $grid-size-min;
+    border: 2px gray dashed;
+
+    &.can-go-through-walls{
+        animation: can-go-through-walls-animaiton ease-out 1s infinite;
+        border: 2px rgb(58, 153, 74) dashed;
+    }
+}

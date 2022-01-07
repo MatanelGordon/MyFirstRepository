@@ -1,0 +1,23 @@
+@keyframes obstacle-appear {
+    from{
+        opacity: 0;
+    }
+    to{
+
+        opacity: 1;
+    }
+}
+.block{
+    position:absolute;
+    inset:0;
+    will-change: transform;
+
+    &-obstacle{
+        //animation: obstacle-appear .2s ease-out forwards;
+        background-color: #212121;
+        overflow: hidden;
+        &-icon{
+            fill:#e9e9e9;
+        }
+    }   
+}
