@@ -1,0 +1,26 @@
+.modal{
+    position:absolute;
+    inset:0;
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-bg{
+        position: inherit;
+        background: black;
+        opacity:.6;
+        inset:0;
+        width: 100%;
+        height:100%;
+    }
+
+    &-text{
+        color:white;
+        font-size: clamp(30px,3vw,40px);
+        z-index: 1;
+        max-width: 60%;
+        text-align: center;
+    }
+}

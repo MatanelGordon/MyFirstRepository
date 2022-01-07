@@ -1,0 +1,16 @@
+.title{
+    &-section{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &-wrapper{
+        max-width: 800px;
+        text-align: center;
+        h1{
+            font-size: clamp(1.5rem, 15vw, 8rem);
+            margin: 20px 0;
+        }
+    }
+}

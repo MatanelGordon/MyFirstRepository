@@ -1,0 +1,28 @@
+@import "skeleton.css";
+@import "normalize.css";
+
+div {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "VCR";
+    src: url("../public/VCR_OSD_MONO_1.001.ttf") format("ttf"),
+        url("../public/VCR_OSD_MONO_1.001.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: "VCR", sans-serif !important;
+}
+
+/*centering the game*/
+#root {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: 100vh;
+    min-height: 600px;
+}
