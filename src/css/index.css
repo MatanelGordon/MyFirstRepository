@@ -1,5 +1,5 @@
-@import "skeleton.css";
-@import "normalize.css";
+@import "npm:skeleton.css";
+@import "npm:normalize.css";
 
 div {
     box-sizing: border-box;

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "isolatedModules": true,
       "outDir": "dist",
       "module": "commonjs",
       "target": "es5",
@@ -8,6 +9,7 @@
       "jsx": "react",
       "moduleResolution": "node",
       "rootDir": "src",
+      "experimentalDecorators": true
     },
     "exclude": [
       "node_modules",
