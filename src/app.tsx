@@ -1,7 +1,7 @@
-import "./scss/index.scss";
 import * as React from "react";
-import { GameFrame } from "./components/game-frame";
 import { render } from "react-dom";
+import "./scss/index.scss";
+import { GameFrame } from "./components/game-frame";
 
 function App() {
     return (

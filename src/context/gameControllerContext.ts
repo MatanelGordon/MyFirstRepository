@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 import { GameController } from "../logic/controllers/gameController";
-import {createGame} from "../logic/factories/gameControllerFactory"
+import { getGame } from "../services";
 
-const gameController = createGame();
+const gameController = getGame();
 export const gameControllerContext = createContext<GameController>(gameController);
 export const GameContextProvider = gameControllerContext.Provider;
 
