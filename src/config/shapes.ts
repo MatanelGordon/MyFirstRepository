@@ -1,3 +1,4 @@
+import _ = require("lodash");
 import { createPosition } from "../logic/factories/position";
 import { Grid, Position } from "../models";
 
