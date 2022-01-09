@@ -73,6 +73,7 @@ export class GameController {
 
     resetGame() {
         this.game.score = 0;
+        this.gridController.clearGrid();
         this.snakeController.resetSnake();
         this.game.hasLost = false;
         this.game.isRunning = false;

@@ -1,4 +1,5 @@
 import { GameController } from "../../controllers";
+import { EventFunction } from "../../controllers/eventController";
 import { SchedulerEventComposerBase } from "./schedulerEventComposerBase";
 
 export class ScoreEventComposer extends SchedulerEventComposerBase {
@@ -10,7 +11,7 @@ export class ScoreEventComposer extends SchedulerEventComposerBase {
 	}
 
     //runs once
-	compose(): (gameController: GameController) => void | Promise<void> {
+	compose(): EventFunction<GameController> {
 
 		return (gameController: GameController) => {
 			gameController.onScoreChange.addEvent(score => {

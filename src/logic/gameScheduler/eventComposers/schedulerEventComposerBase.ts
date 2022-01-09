@@ -1,17 +1,16 @@
 import { GameController } from "../../controllers";
 import EventController, { EventFunction } from "../../controllers/eventController";
 
-export type SchedulerEventType = EventFunction<GameController>;
 
 export abstract class SchedulerEventComposerBase{
-    protected eventFunction:SchedulerEventType;
+    protected eventFunction:EventFunction<GameController>;
     protected hasEventStarted:boolean;
     onEnd:EventController<GameController>;
     onStart:EventController<GameController>;
 
     //compose() function runs once at runtime, 
     //its our job inside the compose() function to figure out the wanted timing
-    abstract compose():SchedulerEventType;
+    abstract compose():EventFunction<GameController>;
 
     constructor(){
         this.onEnd = new EventController();
@@ -20,7 +19,7 @@ export abstract class SchedulerEventComposerBase{
         this.eventFunction = _ => {};
     }
 
-    setEvent(eventFunction:SchedulerEventType):SchedulerEventComposerBase{
+    setEvent(eventFunction:EventFunction<GameController>):SchedulerEventComposerBase{
         this.eventFunction = eventFunction;
         return this;
     }

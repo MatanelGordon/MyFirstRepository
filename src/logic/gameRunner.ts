@@ -13,7 +13,6 @@ export class GameRunner {
 	}
 
 	runGame() {
-		// console.log("running");
 		this.gameController.update();
 
 		this.timerController.onUpdate.addEvent((arg:any) => {

@@ -4,6 +4,3 @@ import { getGame } from "../services";
 
 const gameController = getGame();
 export const gameControllerContext = createContext<GameController>(gameController);
-export const GameContextProvider = gameControllerContext.Provider;
-
-export default GameContextProvider;

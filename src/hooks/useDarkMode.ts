@@ -12,6 +12,8 @@ export function useDarkMode(): [boolean, React.Dispatch<React.SetStateAction<boo
 		}
 	});
 
+	
+
 	useEffect(() => {
 		console.log(`isDarkMode: ${isDarkMode}`);
 		setTimeout(() => {

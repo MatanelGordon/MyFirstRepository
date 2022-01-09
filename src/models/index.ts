@@ -4,4 +4,5 @@ import { Direction } from "./direction";
 import { Position } from "./position";
 import { Snake } from "./snake";
 
-export { Grid, Game, Snake, Direction, Position };
+export { Grid, Game, Snake, Direction };
+export type { Position };
