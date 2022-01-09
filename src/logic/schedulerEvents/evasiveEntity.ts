@@ -3,10 +3,10 @@ import { Game } from "../../models";
 import { isOccupiedInGame } from "../../utils/game";
 import { getSurroundingMovablePositions } from "../../utils/grid";
 import { GameController } from "../controllers";
-import { SchedulerEventType } from "../gameScheduler/eventComposers/schedulerEventComposerBase";
+import { EventFunction } from "../controllers/eventController";
 import { TimeEvent } from "../gameScheduler/eventComposers";
 
-export function evasiveEntity(intervalFunc:() => number, minScore:number, maxScore?:number) :SchedulerEventType{
+export function evasiveEntity(intervalFunc:() => number, minScore:number, maxScore?:number) :EventFunction<GameController>{
     return new TimeEvent({
         intervalFunc:intervalFunc,
         shouldEventRunFunction: (game:Game) => game.score >= minScore && game.score <= maxScore

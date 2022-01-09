@@ -2,7 +2,7 @@ import { Game } from "../../../models";
 import { EventController, GameController, TimerController } from "../../controllers";
 import { EventFunction } from "../../controllers/eventController";
 
-import { SchedulerEventComposerBase, SchedulerEventType } from "./schedulerEventComposerBase"
+import { SchedulerEventComposerBase } from "./schedulerEventComposerBase"
 
 export interface TimeEventProps{
     intervalFunc?:() => number,
@@ -33,7 +33,7 @@ export class TimeEventComposer extends SchedulerEventComposerBase{
         return this;
     }
 
-    setEvent(eventFunction:SchedulerEventType):TimeEventComposer{
+    setEvent(eventFunction:EventFunction<GameController>):TimeEventComposer{
         super.setEvent(eventFunction);
         return this;
     }
@@ -46,7 +46,7 @@ export class TimeEventComposer extends SchedulerEventComposerBase{
     }
 
     //runs once
-    compose(): SchedulerEventType {
+    compose(): EventFunction<GameController> {
         return (gameController:GameController) => {
 
             this.timerController.onUpdate.addEvent(_ => {

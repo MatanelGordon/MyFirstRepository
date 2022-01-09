@@ -1,6 +1,6 @@
 import { remove } from "lodash";
 import { Grid, Position } from "../../../models";
-import { hasCollided } from "../../../utils/position";
+import { hasCollided, randomPosition } from "../../../utils/position";
 import EventController from "../eventController";
 
 export class GridController {
@@ -14,44 +14,54 @@ export class GridController {
         this.onEntitiesChange = new EventController();
     }
 
+    private invokeGridChange(){
+        this.onGridChange.invoke(this.grid);
+    }
+
     addObstacle(position: Position) {
         this.grid.obstacles.push(position);
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
     }
 
     setObstacles(newObstacles: Position[]){
         this.grid.obstacles = newObstacles;
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
     }
 
     removeObstacle(position:Position){
         const foundPosition = this.grid.obstacles.find(obs => hasCollided(obs, position))
         if(foundPosition){
             remove(this.grid.obstacles, foundPosition)
-            this.onGridChange.invoke({...this.grid});
+            this.invokeGridChange();
         }
     }
 
     setObstaclesWithFunction(func: (prev:Position[]) => Position[]){
         this.grid.obstacles = func(this.grid.obstacles);
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
     }
 
     setShouldGoThroughWalls(val:boolean){
         this.grid.shouldGoThroughWalls = val;
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
     }
 
     setEntityPosition(position:Position){
         this.grid.entities[0] = position
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
         this.onEntitiesChange.invoke([...this.grid.entities]);
     }
 
     setEntities(positions:Position[]){
         this.grid.entities = positions;
-        this.onGridChange.invoke({...this.grid});
+        this.invokeGridChange();
         this.onEntitiesChange.invoke([...this.grid.entities]);
+    }
+
+    clearGrid(){
+        this.grid.obstacles = [];
+        this.grid.shouldGoThroughWalls = false;
+        this.invokeGridChange();
     }
 
 }

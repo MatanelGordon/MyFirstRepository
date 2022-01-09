@@ -4,7 +4,6 @@ import Direction from "../../models/direction";
 import { Grid } from "../../models/grid";
 import { Snake } from "../../models/snake";
 import { GameControllerManipulatorBuilder } from "../builders/gameControllerManipulatorBuilder";
-import { GameController } from "../controllers";
 import { createPosition } from "../factories/position";
 import { ScoreEvent, TimeEvent } from "./eventComposers";
 

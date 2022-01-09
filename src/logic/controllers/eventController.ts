@@ -1,13 +1,13 @@
-export type EventFunction<Tin, Tout = void | Promise<void>> = (value:Tin) => Tout;
+export type EventFunction<Tin, Tout = void | Promise<void>> = (evt:Tin) => Tout;
 
 export class EventController<Tin, Tout = void | Promise<void>>{
     protected functions: EventFunction<Tin, Tout>[];
     constructor(){
         this.functions = [];
     }
-    invoke(value:Tin){
+    invoke(evt:Tin){
         this.functions.forEach(func => {
-            func(value);
+            func(evt);
         })
     }
     addEvent(func:EventFunction<Tin,Tout>):number{

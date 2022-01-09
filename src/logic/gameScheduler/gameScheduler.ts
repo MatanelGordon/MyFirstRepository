@@ -1,7 +1,5 @@
 import { GameController } from "../controllers";
-import EventController from "../controllers/eventController";
-
-export type GameSchedulerEvent = (gameController: GameController) => void | Promise<void>;
+import EventController, { EventFunction } from "../controllers/eventController";
 
 export class GameScheduler {
 	onDispose: EventController<void>;
@@ -20,7 +18,7 @@ export class GameScheduler {
 	}
 
 	addEvent(
-		eventFunction: GameSchedulerEvent
+		eventFunction: EventFunction<GameController>
 	): GameScheduler {
 		this.events.addEvent(eventFunction);
 		return this;

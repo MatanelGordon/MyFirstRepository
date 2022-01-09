@@ -8,16 +8,16 @@ export function useGameSettings() {
 	//WARNING: INITIALIZE ONLY ONCE IN A GAME
 	const gameController = useGame();
 
-	const resetGame = useCallback(() => {
+	const resetGame =() => {
 		gameController.resetGame();
-	}, []);
+	}
 
-	const handleButton = useCallback(() => {
+	const handleButton = () => {
 		if (gameController.game.hasLost) {
 			gameController.resetGame();
 		}
 		gameController.setIsRunning(true);
-	}, []);
+	}
 
 	useEffect(() => {
 		window.onkeydown = (evt: KeyboardEvent) => {
