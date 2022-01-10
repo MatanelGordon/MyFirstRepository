@@ -2,7 +2,7 @@ import { SkinContextProps } from "../context/skinContext"
 
 export const SKINS:SkinContextProps[] = [
     {
-        name:"classic",
+        name:"default",
         className:"",
     },
     {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect} from "react";
+import { useEffect} from "react";
 import { Direction } from "../models/direction";
 import { configuredSchuduler } from "../config";
 import { createGameRunner } from "../logic/factories";

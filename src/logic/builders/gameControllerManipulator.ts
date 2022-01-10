@@ -1,14 +1,14 @@
 import { Direction, Game, Grid, Position, Snake } from "../../models";
 import { GameController } from "../controllers";
 
-export class GameControllerManipulatorBuilder {
+export class GameControllerManipulator {
 	gameController: GameController;
 
 	constructor(snake: Snake, grid: Grid) {
 		this.gameController = new GameController(new Game(snake, grid));
 	}
 
-	setEntity(position: Position): GameControllerManipulatorBuilder {
+	setEntity(position: Position): GameControllerManipulator {
 		this.gameController.game.grid.entities = [position];
 		this.gameController.gridController.onEntitiesChange.invoke(
 			this.gameController.game.grid.entities
@@ -16,18 +16,18 @@ export class GameControllerManipulatorBuilder {
 		return this;
 	}
 
-	move(direction: Direction): GameControllerManipulatorBuilder {
+	move(direction: Direction): GameControllerManipulator {
 		this.gameController.setDirection(direction);
 		this.gameController.update();
 		return this;
 	}
 
-	setIsRunning(val: boolean): GameControllerManipulatorBuilder {
+	setIsRunning(val: boolean): GameControllerManipulator {
 		this.gameController.setIsRunning(val);
 		return this;
 	}
 
-	resetGame(): GameControllerManipulatorBuilder {
+	resetGame(): GameControllerManipulator {
 		this.gameController.resetGame();
 		return this;
 	}
@@ -40,7 +40,7 @@ export class GameControllerManipulatorBuilder {
 		return this.gameController;
 	}
 
-	manipulateInstance(callback: (game: GameController) => void): GameControllerManipulatorBuilder {
+	manipulateInstance(callback: (game: GameController) => void): GameControllerManipulator {
 		callback(this.gameController);
 		return this;
 	}

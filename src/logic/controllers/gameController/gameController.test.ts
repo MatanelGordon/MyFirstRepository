@@ -1,11 +1,11 @@
 import { Direction, Grid, Snake } from "../../../models";
-import { GameControllerManipulatorBuilder } from "../../builders/gameControllerManipulatorBuilder";
+import { GameControllerManipulator } from "../../builders/gameControllerManipulator";
 import { createPosition } from "../../factories/position";
 
 test("snake grows after eating", () => {
     const grid = new Grid(10);
     const snake = new Snake(createPosition(2, 2));
-    new GameControllerManipulatorBuilder(snake,grid)
+    new GameControllerManipulator(snake,grid)
         .setEntity(createPosition(3, 2))
         .setIsRunning(true)
         .move(Direction.RIGHT)
@@ -17,7 +17,7 @@ test("lose after colliding to self", () => {
     const grid = new Grid(10);
     const snake = new Snake(createPosition(2, 2));
 
-    const game = new GameControllerManipulatorBuilder(snake, grid)
+    const game = new GameControllerManipulator(snake, grid)
         .setEntity(createPosition(3, 2))
         .setIsRunning(true)
         .move(Direction.RIGHT)
@@ -42,7 +42,7 @@ test("resets game successfully", () => {
     //play -> lose -> reset - see if its good
     const grid = new Grid(10);
     const snake = new Snake(createPosition(2, 2));
-    const game = new GameControllerManipulatorBuilder(snake, grid)
+    const game = new GameControllerManipulator(snake, grid)
         .setEntity(createPosition(3, 2))
         .setIsRunning(true)
         .move(Direction.RIGHT)
@@ -72,7 +72,7 @@ test("all events are responding", () => {
 
     const grid = new Grid(10);
     const snake = new Snake(createPosition(2, 2));
-    new GameControllerManipulatorBuilder(snake, grid)
+    new GameControllerManipulator(snake, grid)
         .manipulateInstance((gameCont) => {
             gameCont.gridController.onEntitiesChange.addEvent(onEntitiesChangeMock);
             gameCont.onScoreChange.addEvent(onScoreChangeMock);

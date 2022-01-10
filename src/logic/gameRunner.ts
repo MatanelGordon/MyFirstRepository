@@ -15,7 +15,7 @@ export class GameRunner {
 	runGame() {
 		this.gameController.update();
 
-		this.timerController.onUpdate.addEvent((arg:any) => {
+		this.timerController.onUpdate.addEvent((arg: any) => {
 			const gameController = arg as GameController;
 			gameController.update();
 		});

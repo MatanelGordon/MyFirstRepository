@@ -1,22 +1,23 @@
-import { TimeEvent } from "../gameScheduler/eventComposers";
-import { SchedulerEventType } from "../gameScheduler/eventComposers/schedulerEventComposerBase";
+import { TimeEventComposer } from "../gameScheduler/eventComposers";
 import { Game, Position } from "../../models";
 import { TimeEventProps } from "../gameScheduler/eventComposers/timeEventComposer";
 import { getSurroundingPositions, isOccupiedInGrid } from "../../utils/grid";
 import { hasCollided } from "../../utils/position";
 import { last } from "lodash";
+import { EventFunction } from "../controllers/eventController";
+import { GameController } from "../controllers";
 
 export function obstaclesChanger(
 	timeProps: TimeEventProps,
 	wantedShape: Position[]
-): SchedulerEventType {
-	let isFolding = false;
+): EventFunction<GameController> {
+	let shouldReverse = false;
 	const shape = [...wantedShape];
-	return new TimeEvent(timeProps)
+	return new TimeEventComposer(timeProps)
 		.setEvent((gameController) => {
 			const { gridController, game } = gameController;
 			const { grid, snake } = game;
-			if (!isFolding) {
+			if (!shouldReverse) {
 				const chosenPos: Position = findNextEmptyPositionFrom(game, shape);
 
 				if (chosenPos) {
@@ -36,7 +37,7 @@ export function obstaclesChanger(
 				}
 
 				if (grid.obstacles.length === shape.length) {
-					isFolding = true;
+					shouldReverse = true;
 				}
 			} else {
 				const chosenPos: Position = last(grid.obstacles);
@@ -46,7 +47,7 @@ export function obstaclesChanger(
 				}
 
 				if (grid.obstacles.length === 0) {
-					isFolding = false;
+					shouldReverse = false;
 				}
 			}
 		})

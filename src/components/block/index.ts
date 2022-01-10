@@ -3,5 +3,6 @@ import GameBlock from "./gameBlock";
 import SnakeBlock from "./snakeBlock";
 import ObstacleBlock from "./obstacleBlock";
 export default {GameBlock, SnakeBlock}
-export {GameBlock, BlockProps, SnakeBlock, ObstacleBlock as ObsticleBlock};
+export {GameBlock, SnakeBlock, ObstacleBlock as ObsticleBlock};
+export type {BlockProps};
 

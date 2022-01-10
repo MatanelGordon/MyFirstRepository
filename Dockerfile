@@ -6,3 +6,4 @@ RUN yarn install && yarn build
 
 FROM nginx:latest
 COPY --from=builder /home/app/dist /usr/share/nginx/html
+EXPOSE 80
